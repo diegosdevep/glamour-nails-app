@@ -1,5 +1,13 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useLayoutEffect } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Keyboard,
+  Platform,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './form.styles';
 import { Icon, Input } from 'react-native-elements';
@@ -7,16 +15,37 @@ import { color } from '../../../Constants/colors';
 
 const Form = () => {
   const navigation = useNavigation();
+  const [keyboardShown, setKeyboardShown] = useState(false);
+
+  useLayoutEffect(() => {
+    const showListener = Keyboard.addListener('keyboardDidShow', () =>
+      setKeyboardShown(true)
+    );
+    const hideListener = Keyboard.addListener('keyboardDidHide', () =>
+      setKeyboardShown(false)
+    );
+
+    return () => {
+      showListener.remove();
+      hideListener.remove();
+    };
+  }, []);
 
   return (
-    <View style={styles.content}>
-      <View style={styles.containerTitle}>
-        <Image
-          source={require('../../../../assets/icon.png')}
-          style={styles.img}
-        />
-        <Text style={styles.title}>Glamour Nails </Text>
-      </View>
+    <KeyboardAvoidingView
+      style={styles.content}
+      behavior='padding'
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -250}
+    >
+      {!keyboardShown && (
+        <View style={styles.containerTitle}>
+          <Image
+            source={require('../../../../assets/icon.png')}
+            style={styles.img}
+          />
+          <Text style={styles.title}>Glamour Nails </Text>
+        </View>
+      )}
 
       <View style={styles.form}>
         <Input
@@ -44,21 +73,20 @@ const Form = () => {
             />
           }
         />
-      </View>
+        <View>
+          <TouchableOpacity activeOpacity={0.7} style={styles.btn}>
+            <Text style={styles.btnText}>Iniciar Sesion</Text>
+          </TouchableOpacity>
 
-      <View>
-        <TouchableOpacity activeOpacity={0.7} style={styles.btn}>
-          <Text style={styles.btnText}>Iniciar Sesion</Text>
-        </TouchableOpacity>
-
-        <Text
-          style={styles.text}
-          onPress={() => navigation.navigate('Register')}
-        >
-          No tienes cuenta? <Text style={styles.span}>Registrate aqui</Text>
-        </Text>
+          <Text
+            style={styles.text}
+            onPress={() => navigation.navigate('Register')}
+          >
+            No tienes cuenta? <Text style={styles.span}>Registrate aqui</Text>
+          </Text>
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
