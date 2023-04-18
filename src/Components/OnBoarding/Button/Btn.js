@@ -16,12 +16,16 @@ const Btn = ({ percentage, scrollTo }) => {
   const progressRef = useRef(null);
 
   const animation = (toValue) => {
-    return Animated.timing(progressAnimation, {
-      toValue,
-      duration: 250,
-      easing: Easing.inOut(Easing.ease),
-      useNativeDriver: true,
-    }).start();
+    return Animated.timing(
+      progressAnimation,
+      {
+        toValue,
+        duration: 500,
+        easing: Easing.out(Easing.poly(4)),
+        useNativeDriver: true,
+      },
+      60
+    ).start();
   };
 
   useEffect(() => {

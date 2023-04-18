@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import OnBoardingStack from './Stack/OnBoardingStack';
 import BottomTab from './BottomTab/BottomTab';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AccountStack from './Stack/AccountStack';
 
 const AppNavigation = () => {
   const [user, setUser] = useState(false);
 
-  return user ? <BottomTab /> : <OnBoardingStack />;
+  return user ? <BottomTab /> : <AccountStack />;
 };
 
 export default AppNavigation;

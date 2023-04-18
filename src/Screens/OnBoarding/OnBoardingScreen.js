@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
 import { Animated, FlatList, SafeAreaView, View } from 'react-native';
 import Btn from '../../Components/OnBoarding/Button/Btn';
@@ -8,6 +9,7 @@ import { styles } from './onboarding.styles';
 
 const OnBoardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigation = useNavigation();
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
 
@@ -17,17 +19,22 @@ const OnBoardingScreen = () => {
 
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
+  const goToLogin = () => {
+    navigation.navigate('Login');
+  };
+
   const scrollTo = () => {
     if (currentIndex < slides.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
       console.log('last item');
+      goToLogin();
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ flex: 4 }}>
+      <View style={{ flex: 3 }}>
         <FlatList
           data={slides}
           keyExtractor={(item) => item.id}
