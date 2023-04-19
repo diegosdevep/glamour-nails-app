@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    gap: 50,
+    gap: 30,
     alignItems: 'center',
     marginTop: Platform.OS === 'android' ? 140 : 60,
   },
@@ -30,20 +30,17 @@ export const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    padding: 15,
+    padding: 10,
     fontSize: 18,
   },
   btn: {
     width: Dimensions.get('window').width * 0.8,
-    backgroundColor: color.primary,
-    padding: 18,
-    borderRadius: 10,
+    borderRadius: 6,
     marginTop: 20,
   },
   btnText: {
-    fontSize: 18,
-    color: '#FFF',
-    textAlign: 'center',
+    backgroundColor: color.primary,
+    padding: 12,
   },
   text: {
     fontSize: 16,

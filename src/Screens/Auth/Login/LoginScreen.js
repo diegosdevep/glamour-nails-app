@@ -1,28 +1,16 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StatusBar,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import { styles } from './login.styles';
-import { useNavigation } from '@react-navigation/native';
-import Form from '../../../Components/Form/Formulario/Form';
+import LoginForm from '../../../Components/Form/LoginForm/LoginForm';
 
 const LoginScreen = () => {
-  const navigation = useNavigation();
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle='light-content' />
       <View style={styles.leftCircle} />
       <View style={styles.rightCircle} />
 
-      <Form />
+      <LoginForm />
     </SafeAreaView>
   );
 };
