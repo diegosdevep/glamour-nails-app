@@ -94,7 +94,7 @@ const RegisterForm = () => {
         <Input
           containerStyle={styles.input}
           placeholder='Password'
-          secureTextEntry
+          secureTextEntry={showPassword ? false : true}
           rightIcon={
             <Icon
               type='material-community'
@@ -110,7 +110,7 @@ const RegisterForm = () => {
         <Input
           containerStyle={styles.input}
           placeholder='Confirm Password'
-          secureTextEntry
+          secureTextEntry={showPassword ? false : true}
           rightIcon={
             <Icon
               type='material-community'

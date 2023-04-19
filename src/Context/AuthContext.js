@@ -7,6 +7,7 @@ const AuthContext = createContext({
   isLoading: true,
   updateAuthState: () => {},
   logout: () => {},
+  setIsLoggedIn: () => {}, // añadido
 });
 
 export const useAppContext = () => {
@@ -44,9 +45,9 @@ export const AuthProvider = ({ children }) => {
   const updateAuthState = (user) => {
     setHasLogged(!!user);
     if (user) {
-      AsyncStorage.setItem('hasLogged', 'true');
+      AsyncStorage.setItem('isLoggedIn', 'true');
     } else {
-      AsyncStorage.removeItem('hasLogged');
+      AsyncStorage.removeItem('isLoggedIn');
     }
   };
 
@@ -54,9 +55,14 @@ export const AuthProvider = ({ children }) => {
     updateAuthState(null);
   };
 
+  const setIsLoggedIn = (value) => {
+    // añadido
+    setHasLogged(value);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ hasLogged, isLoading, updateAuthState, logout }}
+      value={{ hasLogged, isLoading, updateAuthState, logout, setIsLoggedIn }}
     >
       {children}
     </AuthContext.Provider>

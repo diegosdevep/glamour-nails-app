@@ -97,7 +97,7 @@ const LoginForm = () => {
           containerStyle={styles.input}
           placeholder='Password'
           keyboardType='default'
-          secureTextEntry
+          secureTextEntry={showPassword ? false : true}
           rightIcon={
             <Icon
               type='material-community'

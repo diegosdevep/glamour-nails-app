@@ -5,9 +5,9 @@ import { Text } from 'react-native';
 import { useAppContext } from '../Context/AuthContext';
 
 const AppNavigation = () => {
-  const { hasLogged } = useAppContext();
+  const { hasLogged, isLoading } = useAppContext();
 
-  if (hasLogged === null) return <Text>Loading...</Text>;
+  if (isLoading) return <Text>Loading...</Text>;
 
   return hasLogged ? <BottomTab /> : <AuthStack />;
 };
