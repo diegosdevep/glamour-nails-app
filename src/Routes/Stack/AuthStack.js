@@ -12,7 +12,7 @@ const AuthStack = () => {
   const { hasLogged, setIsLoggedIn } = useAppContext();
 
   useEffect(() => {
-    AsyncStorage.getItem('isLoggedIn').then((value) => {
+    AsyncStorage.getItem('hasLogged').then((value) => {
       if (value === 'true') {
         setIsLoggedIn(true);
       }

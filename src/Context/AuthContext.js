@@ -45,9 +45,9 @@ export const AuthProvider = ({ children }) => {
   const updateAuthState = (user) => {
     setHasLogged(!!user);
     if (user) {
-      AsyncStorage.setItem('isLoggedIn', 'true');
+      AsyncStorage.setItem('hasLogged', 'true');
     } else {
-      AsyncStorage.removeItem('isLoggedIn');
+      AsyncStorage.removeItem('hasLogged');
     }
   };
 
