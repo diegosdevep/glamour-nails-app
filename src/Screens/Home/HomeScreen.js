@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, Image } from 'react-native';
+import { View, Text, Dimensions, Image, ScrollView } from 'react-native';
 import { getAuth } from 'firebase/auth';
 import Carousel from '../../Components/Shared/Carousel/Carousel';
 import { styles } from './home.styles';
@@ -15,7 +15,7 @@ const HomeScreen = () => {
     email.substring(1, email.indexOf('@')).toLocaleLowerCase();
 
   return (
-    <View>
+    <ScrollView>
       <View style={{ marginHorizontal: '3%', marginVertical: 10, gap: 5 }}>
         <Text style={styles.greeting}>Hola {userName}</Text>
         <Text style={styles.title}>
@@ -36,9 +36,9 @@ const HomeScreen = () => {
         title='Agendar Turno'
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
-        titleStyle={styles.text}
+        titleStyle={styles.textBtn}
       />
-    </View>
+    </ScrollView>
   );
 };
 

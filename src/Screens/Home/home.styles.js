@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#97389E',
     borderRadius: 10,
   },
-  text: {
+  textBtn: {
     fontSize: 18,
   },
 });
