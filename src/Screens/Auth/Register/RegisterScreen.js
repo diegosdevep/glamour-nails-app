@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView, StatusBar } from 'react-native';
-import RegisterForm from '../../../Components/Form/RegisterForm/RegisterForm';
+import RegisterForm from '../../../Components/Auth/RegisterForm/RegisterForm';
 import { styles } from './register.styles';
 
 const RegisterScreen = () => {

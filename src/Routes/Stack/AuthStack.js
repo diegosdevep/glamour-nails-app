@@ -4,7 +4,6 @@ import RegisterScreen from '../../Screens/Auth/Register/RegisterScreen';
 import OnBoardingScreen from '../../Screens/OnBoarding/OnBoardingScreen';
 import { useAppContext } from '../../Context/AuthContext';
 import { useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,12 +11,8 @@ const AuthStack = () => {
   const { hasLogged, setIsLoggedIn } = useAppContext();
 
   useEffect(() => {
-    AsyncStorage.getItem('hasLogged').then((value) => {
-      if (value === 'true') {
-        setIsLoggedIn(true);
-      }
-    });
-  }, []);
+    setIsLoggedIn(hasLogged);
+  }, [hasLogged]);
 
   return (
     <Stack.Navigator

@@ -1,13 +1,17 @@
 import { View, Text, Image, StatusBar } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { color } from '../../Constants/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import InfoUser from '../../Components/Account/Profile/InfoUser/InfoUser';
+import AccountOptions from '../../Components/Account/Profile/AccountOptions/AccountOptions';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
+  const [_, setReload] = useState(false);
+
+  const onReload = () => setReload((prevState) => !prevState);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -47,6 +51,7 @@ const ProfileScreen = () => {
     <View>
       <StatusBar barStyle='light-content' />
       <InfoUser />
+      <AccountOptions onReload={onReload} />
     </View>
   );
 };

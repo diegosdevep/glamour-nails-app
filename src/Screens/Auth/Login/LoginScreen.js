@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, SafeAreaView, StatusBar } from 'react-native';
 import { styles } from './login.styles';
-import LoginForm from '../../../Components/Form/LoginForm/LoginForm';
+import LoginForm from '../../../Components/Auth/LoginForm/LoginForm';
 
 const LoginScreen = () => {
   return (

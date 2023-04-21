@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const AuthContext = createContext({
@@ -7,7 +6,7 @@ const AuthContext = createContext({
   isLoading: true,
   updateAuthState: () => {},
   logout: () => {},
-  setIsLoggedIn: () => {}, // añadido
+  setIsLoggedIn: () => {},
 });
 
 export const useAppContext = () => {
@@ -27,36 +26,21 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
-  useEffect(() => {
-    const checkUserLogin = async () => {
-      setIsLoading(true);
-      try {
-        const hasLogged = await AsyncStorage.getItem('hasLogged');
-        updateAuthState(hasLogged === 'true' ? { uid: 'fake_uid' } : null);
-      } catch (error) {
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
-
-    checkUserLogin();
-  }, []);
-
   const updateAuthState = (user) => {
     setHasLogged(!!user);
-    if (user) {
-      AsyncStorage.setItem('hasLogged', 'true');
-    } else {
-      AsyncStorage.removeItem('hasLogged');
+  };
+
+  const logout = async () => {
+    try {
+      const auth = getAuth();
+      await auth.signOut();
+      updateAuthState(null);
+    } catch (error) {
+      console.error('Error al cerrar sesión', error);
     }
   };
 
-  const logout = () => {
-    updateAuthState(null);
-  };
-
   const setIsLoggedIn = (value) => {
-    // añadido
     setHasLogged(value);
   };
 
