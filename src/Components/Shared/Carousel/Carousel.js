@@ -53,6 +53,7 @@ const Carousel = ({ width, height, hideDots }) => {
       <CarouselSnap
         layout='default'
         data={images}
+        firstItem={1}
         sliderWidth={width}
         itemWidth={width / 1.9}
         renderItem={renderItem}

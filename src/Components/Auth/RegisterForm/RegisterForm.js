@@ -80,6 +80,7 @@ const RegisterForm = () => {
         <Input
           containerStyle={styles.input}
           placeholder='Email'
+          keyboardType='email-address'
           rightIcon={
             <Icon
               type='material-community'

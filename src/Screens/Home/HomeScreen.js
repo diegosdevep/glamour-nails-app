@@ -22,6 +22,7 @@ const HomeScreen = () => {
           ¿Qué diseños elegirás en tu próxima reserva?
         </Text>
       </View>
+
       <Carousel width={width} height={250} />
 
       <Text style={styles.text}>
