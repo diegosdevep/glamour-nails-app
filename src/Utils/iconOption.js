@@ -1,4 +1,9 @@
-import { Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
+import {
+  Entypo,
+  AntDesign,
+  Ionicons,
+  MaterialCommunityIcons,
+} from '@expo/vector-icons';
 import { color } from '../Constants/colors';
 
 export const iconOptions = {
@@ -7,8 +12,20 @@ export const iconOptions = {
     focused: <Entypo color={color.secondary} size={24} name='home' />,
   },
   booking: {
-    default: <AntDesign color={'grey'} size={24} name='hearto' />,
-    focused: <AntDesign color={color.secondary} size={24} name='heart' />,
+    default: (
+      <MaterialCommunityIcons
+        color={'grey'}
+        size={24}
+        name='bookmark-outline'
+      />
+    ),
+    focused: (
+      <MaterialCommunityIcons
+        color={color.secondary}
+        size={24}
+        name='bookmark'
+      />
+    ),
   },
   saved: {
     default: <Ionicons color={'grey'} size={24} name='notifications-outline' />,

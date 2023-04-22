@@ -20,6 +20,7 @@ const Carousel = ({ width, height, hideDots }) => {
         borderRadius: 10,
         height: 300,
         width: 280,
+        marginTop: 10,
       }}
     >
       <Image

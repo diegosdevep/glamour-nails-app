@@ -4,12 +4,17 @@ import { color } from '../../Constants/colors';
 export const styles = StyleSheet.create({
   title: {
     fontSize: 24,
-    fontWeight: 300,
+    fontWeight: 600,
     color: color.secondary,
+    textAlign: 'center',
   },
   greeting: {
-    fontSize: 20,
+    fontSize: 16,
     color: color.secondary,
+  },
+  span: {
+    fontWeight: '600',
+    fontSize: 17,
   },
   text: {
     fontSize: 16,

@@ -3,6 +3,7 @@ import HomeStack from '../Stack/HomeStack';
 import AccountStack from '../Stack/AccountStack';
 import { iconOptions } from '../../Utils/iconOption';
 import { color } from '../../Constants/colors';
+import Booking from '../../Screens/Booking/Booking';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +24,15 @@ const BottomTab = () => {
           title: 'Home',
           tabBarIcon: ({ focused }) =>
             focused ? iconOptions.home.focused : iconOptions.home.default,
+        }}
+      />
+      <Tab.Screen
+        name='BookingTab'
+        component={Booking}
+        options={{
+          title: 'Turnos',
+          tabBarIcon: ({ focused }) =>
+            focused ? iconOptions.booking.focused : iconOptions.booking.default,
         }}
       />
       <Tab.Screen

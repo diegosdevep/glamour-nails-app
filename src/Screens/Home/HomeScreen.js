@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 import Carousel from '../../Components/Shared/Carousel/Carousel';
 import { styles } from './home.styles';
 import { Button } from 'react-native-elements';
+import CarouselAds from '../../Components/Shared/CarouselAds/CarouselAds';
 
 const HomeScreen = () => {
   const { email } = getAuth().currentUser;
@@ -17,7 +18,9 @@ const HomeScreen = () => {
   return (
     <ScrollView>
       <View style={{ marginHorizontal: '3%', marginVertical: 10, gap: 5 }}>
-        <Text style={styles.greeting}>Hola {userName}</Text>
+        <Text style={styles.greeting}>
+          Hola <Text style={styles.span}>{userName}</Text>
+        </Text>
         <Text style={styles.title}>
           ¿Qué diseños elegirás en tu próxima reserva?
         </Text>
@@ -39,6 +42,8 @@ const HomeScreen = () => {
         buttonStyle={styles.btn}
         titleStyle={styles.textBtn}
       />
+
+      <CarouselAds width={width} height={250} />
     </ScrollView>
   );
 };
